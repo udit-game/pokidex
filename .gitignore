@@ -4,5 +4,7 @@ build/
 .gradle/
 .idea/
 .env
+.env.*
+!.env.example
 *.iml
 .DS_Store
