@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+/* ---------- 1. Raw tokens: change the whole app's look here ---------- */
+:root {
+  --bg: #f4f5f9;
+  --surface: #ffffff;
+  --border: #e3e6ee;
+  --fg: #151a27;
+  --muted: #667085;
+  --brand: #e3350d;
+  --brand-fg: #ffffff;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #0e1117;
+  --surface: #171b24;
+  --border: #272d3a;
+  --fg: #eef1f7;
+  --muted: #98a2b3;
+  --brand: #ff5a36;
+  --brand-fg: #ffffff;
+  color-scheme: dark;
+}
+
+/* ---------- 2. Expose tokens as Tailwind utilities (bg-surface, text-muted...) ---------- */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-brand: var(--brand);
+  --color-brand-fg: var(--brand-fg);
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ---------- 3. Pokémon type palette (`static` = always emitted, used via var() in TS) ---------- */
+@theme static {
+  --color-type-normal: #a8a77a;
+  --color-type-fire: #ee8130;
+  --color-type-water: #6390f0;
+  --color-type-electric: #f7d02c;
+  --color-type-grass: #7ac74c;
+  --color-type-ice: #96d9d6;
+  --color-type-fighting: #c22e28;
+  --color-type-poison: #a33ea1;
+  --color-type-ground: #e2bf65;
+  --color-type-flying: #a98ff3;
+  --color-type-psychic: #f95587;
+  --color-type-bug: #a6b91a;
+  --color-type-rock: #b6a136;
+  --color-type-ghost: #735797;
+  --color-type-dragon: #6f35fc;
+  --color-type-dark: #705746;
+  --color-type-steel: #b7b7ce;
+  --color-type-fairy: #d685ad;
+}
+
+@theme {
+  --animate-fade-in: fade-in 0.25s ease-out;
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: none; }
+  }
+}
+
+@layer base {
+  *, ::before, ::after { border-color: var(--border); }
+  body { background-color: var(--bg); color: var(--fg); }
+  :focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+}
